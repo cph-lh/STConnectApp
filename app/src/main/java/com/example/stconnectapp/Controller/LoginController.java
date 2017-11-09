@@ -7,11 +7,10 @@ import com.example.stconnectapp.Model.LoginHandler;
 
 public class LoginController {
 
-    private Context context;
     private LoginHandler loginHandler;
 
     public LoginController(Context context){
-        this.context = context;
+        Context ct = context;
         loginHandler = new LoginHandler(context);
     }
 

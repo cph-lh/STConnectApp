@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">STConnectApp</string>
+    <string name="app_name">Student Talks: Connect</string>
     <string name="action_settings">Settings</string>
     <string name="action_log_in">Log in</string>
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
