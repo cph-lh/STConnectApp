@@ -1,21 +1,24 @@
 package com.example.stconnectapp.Controller;
 
-import android.content.Context;
-
-import com.example.stconnectapp.DTO.User;
+import com.example.stconnectapp.Model.User;
 import com.example.stconnectapp.Model.LoginHandler;
+import com.example.stconnectapp.View.LogInFragment;
 
 public class LoginController {
-
     private LoginHandler loginHandler;
+    private LogInFragment fragment;
 
-    public LoginController(Context context){
-        Context ct = context;
-        loginHandler = new LoginHandler(context);
+    public LoginController(LogInFragment fragment){
+        loginHandler = new LoginHandler(this);
+        this.fragment = fragment;
     }
 
-    public boolean logIn(String email, String password) {
+    public void logIn(String email, String password) {
         User user = new User(email, password, null);
-        return loginHandler.logIn(user);
+        loginHandler.logIn(user);
+    }
+
+    public void statusCode(int statusCode){
+        fragment.getStatusCode(statusCode);
     }
 }

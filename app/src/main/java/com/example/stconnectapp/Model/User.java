@@ -1,15 +1,15 @@
-package com.example.stconnectapp.DTO;
+package com.example.stconnectapp.Model;
 
 public class User {
 
     String email;
     String password;
-    String password_confirmation;
+    String passwordConfirmation;
 
-    public User(String email, String password, String password_confirmation) {
+    public User(String email, String password, String passwordConfirmation) {
         this.email = email;
         this.password = password;
-        this.password_confirmation = password;
+        this.passwordConfirmation = passwordConfirmation;
     }
 
     public String getEmail() {
@@ -28,11 +28,11 @@ public class User {
         this.password = password;
     }
 
-    public String getPasswordChange() {
-        return password_confirmation;
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
     }
 
-    public void setPasswordChange(String password_confirmation) {
-        this.password_confirmation = password_confirmation;
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
     }
 }

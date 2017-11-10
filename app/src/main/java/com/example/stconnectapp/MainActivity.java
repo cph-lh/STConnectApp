@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.stconnectapp.DTO.User;
 import com.example.stconnectapp.Model.Helper;
 import com.example.stconnectapp.View.LogInFragment;
 import com.loopj.android.http.AsyncHttpClient;
@@ -22,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Helper.setContext(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Helper.setContext(this);
 
         if (savedInstanceState == null) {
             LogInFragment startFragment = LogInFragment.newInstance();

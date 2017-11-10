@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/password_button"
+        android:id="@+id/new_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -15,7 +15,7 @@
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password_button"
+        android:layout_below="@id/new_password"
         android:layout_centerHorizontal="true"
         android:clickable="true"
         android:focusable="true"
@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/password_button"
+        android:layout_above="@+id/new_password"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:text="Menu"
