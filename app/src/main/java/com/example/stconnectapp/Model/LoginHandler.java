@@ -41,7 +41,6 @@ public class LoginHandler {
                                 JSONObject serverResp = new JSONObject(response.toString());
                             Log.d("asd", "----------------RESPONSE: " + serverResp + Arrays.toString(headers));
                             } catch (JSONException e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
                             sharedPreferences = Helper.getContext().getSharedPreferences("sp", Helper.getContext().MODE_PRIVATE);

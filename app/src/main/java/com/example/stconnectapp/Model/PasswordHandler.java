@@ -48,20 +48,19 @@ public class PasswordHandler {
                     new JsonHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            // If the response is JSONObject instead of expected JSONArray
                             Log.d("asd", "-------------RESPONSE: " + response);
                             try {
                                 JSONObject serverResp = new JSONObject(response.toString());
                             } catch (JSONException e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
+                            controller.statusCode(statusCode);
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                             super.onFailure(statusCode, headers, throwable, errorResponse);
-
+                            controller.statusCode(statusCode);
                         }
                     });
         } catch (Exception e) {

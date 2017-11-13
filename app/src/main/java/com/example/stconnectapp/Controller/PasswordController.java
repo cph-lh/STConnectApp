@@ -18,4 +18,8 @@ public class PasswordController {
         User user = new User(null, password, passwordConfirm);
         handler.changePassword(user);
     }
+
+    public void statusCode(int statusCode){
+        fragment.getStatusCode(statusCode);
+    }
 }

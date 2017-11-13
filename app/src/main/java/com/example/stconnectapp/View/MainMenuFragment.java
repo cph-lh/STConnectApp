@@ -6,17 +6,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 
+import com.example.stconnectapp.Model.Helper;
 import com.example.stconnectapp.R;
 
 public class MainMenuFragment extends Fragment {
 
     private View root;
+    private GridView grid;
 
-    public static MainMenuFragment newInstance(){
+    public static MainMenuFragment newInstance() {
         return new MainMenuFragment();
     }
+
+    String[] gridStrings = {"Profile", "Change password", "Search"};
+    int[] gridImages = {R.drawable.ic_person, R.drawable.ic_edit, R.drawable.ic_search};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,12 +31,24 @@ public class MainMenuFragment extends Fragment {
 
         root = inflater.inflate(R.layout.main_menu_fragment, container, false);
 
-        Button button = root.findViewById(R.id.change_password);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChangePasswordFragment fragment = ChangePasswordFragment.newInstance();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+        grid = root.findViewById(R.id.gridview);
+        grid.setAdapter(new GridAdapter(Helper.getContext(), gridStrings, gridImages));
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                switch (position) {
+                    case 0:
+                        //Profile fragment
+                        break;
+                    case 1:
+                        ChangePasswordFragment fragment = ChangePasswordFragment.newInstance();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+                        break;
+                    case 2:
+                        //Search fragment
+                        break;
+                }
             }
         });
         return root;
