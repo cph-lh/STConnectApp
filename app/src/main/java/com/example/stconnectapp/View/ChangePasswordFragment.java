@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.stconnectapp.Controller.PasswordController;
+import com.example.stconnectapp.Model.PasswordHandler;
+import com.example.stconnectapp.Model.User;
 import com.example.stconnectapp.R;
 
 public class ChangePasswordFragment extends Fragment {
 
     private View root;
-    private PasswordController controller;
+    private PasswordHandler handler;
     private EditText password;
     private EditText passwordConfirmation;
 
@@ -26,8 +27,9 @@ public class ChangePasswordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        controller = new PasswordController(this);
         root = inflater.inflate(R.layout.change_password_fragment, container, false);
+
+        handler = new PasswordHandler(this);
 
         password = root.findViewById(R.id.password);
         passwordConfirmation = root.findViewById(R.id.password_confirmation);
@@ -36,13 +38,14 @@ public class ChangePasswordFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.changePassword(password.getText().toString(), passwordConfirmation.getText().toString());
+                User user = new User(null, password.getText().toString(), passwordConfirmation.getText().toString());
+                handler.changePassword(user);
             }
         });
         return root;
     }
 
-    public void getStatusCode(int statusCode) {
+    public void statusCode(int statusCode) {
         switch (statusCode) {
             case 200:
                 MainMenuFragment fragment = MainMenuFragment.newInstance();

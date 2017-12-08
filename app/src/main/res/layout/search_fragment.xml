@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name_label"
+        android:layout_width="37dp"
+        android:layout_height="0dp"
+        android:layout_alignTop="@+id/search_name"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="144dp"
+        android:layout_toStartOf="@+id/search_name"
+        android:labelFor="@id/search_name"
+        android:text="Name"
+        app:layout_constraintEnd_toStartOf="@+id/search_name"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search_name"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/search_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="116dp"
+        android:layout_marginTop="132dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/email_label"
+        android:layout_width="37dp"
+        android:layout_height="0dp"
+        android:layout_alignTop="@+id/search_name"
+        android:layout_marginBottom="304dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_toStartOf="@+id/search_name"
+        android:labelFor="@id/search_name"
+        android:text="Email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/search_email"
+        app:layout_constraintHorizontal_bias="0.776"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/search_email"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="116dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_name" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="SEARCH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_email"
+        app:layout_constraintVertical_bias="0.33" />
+
+</android.support.constraint.ConstraintLayout>

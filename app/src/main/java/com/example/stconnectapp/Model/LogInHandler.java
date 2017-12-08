@@ -3,29 +3,33 @@ package com.example.stconnectapp.Model;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.example.stconnectapp.Controller.LoginController;
-import com.example.stconnectapp.Model.User;
+import com.example.stconnectapp.View.LogInFragment;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+
 import java.util.Arrays;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
-public class LoginHandler {
-    private LoginController controller;
+public class LogInHandler {
     private AsyncHttpClient client;
     private static final String BASE_URL = "http://159.89.3.169:3000/auth/";
     private SharedPreferences sharedPreferences;
+    private LogInFragment fragment;
 
-    public LoginHandler(LoginController controller){
-        this.controller = controller;
-    };
+    public LogInHandler() {}
 
+    public LogInHandler(LogInFragment fragment) {
+        this.fragment = fragment;
+    }
     public void logIn(User user) {
         client = new AsyncHttpClient();
         JSONObject jsonParams = new JSONObject();
@@ -39,7 +43,7 @@ public class LoginHandler {
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
                                 JSONObject serverResp = new JSONObject(response.toString());
-                            Log.d("asd", "----------------RESPONSE: " + serverResp + Arrays.toString(headers));
+                                Log.d("asd", "----------------RESPONSE: " + serverResp + Arrays.toString(headers));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -51,17 +55,21 @@ public class LoginHandler {
                             }
                             editor.apply();
                             Log.d("asd", "---------------EXPECTED: " + sharedPreferences.getString("access-token", ""));
-                            controller.statusCode(statusCode);
+                            fragment.statusCode(statusCode);
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                             super.onFailure(statusCode, headers, throwable, errorResponse);
-                            controller.statusCode(statusCode);
+                            fragment.statusCode(statusCode);
                         }
                     });
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
+
 }

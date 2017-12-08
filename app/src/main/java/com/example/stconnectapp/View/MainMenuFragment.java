@@ -42,11 +42,12 @@ public class MainMenuFragment extends Fragment {
                         //Profile fragment
                         break;
                     case 1:
-                        ChangePasswordFragment fragment = ChangePasswordFragment.newInstance();
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+                        ChangePasswordFragment passwordFragment = ChangePasswordFragment.newInstance();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, passwordFragment).addToBackStack(null).commit();
                         break;
                     case 2:
-                        //Search fragment
+                        SearchFragment searchFragment = SearchFragment.newInstance();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, searchFragment).addToBackStack(null).commit();
                         break;
                 }
             }
