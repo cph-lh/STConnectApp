@@ -3,6 +3,7 @@ package com.example.stconnectapp.View;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +12,22 @@ import android.widget.TextView;
 
 import com.example.stconnectapp.Model.SearchHandler;
 import com.example.stconnectapp.Model.Search;
+import com.example.stconnectapp.Model.Skill;
+import com.example.stconnectapp.Model.User;
 import com.example.stconnectapp.R;
 
 import org.json.JSONException;
+
+import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
     private SearchHandler handler;
     private View root;
-    private TextView name, email;
+    private TextView name, email, education, experience, skills;
     private Button search;
 
-
-    public static SearchFragment newInstance(){
+    public static SearchFragment newInstance() {
         return new SearchFragment();
     }
 
@@ -32,10 +36,14 @@ public class SearchFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         root = inflater.inflate(R.layout.search_fragment, container, false);
 
+        getActivity().setTitle("Search");
         handler = new SearchHandler(this);
 
         name = root.findViewById(R.id.search_name);
         email = root.findViewById(R.id.search_email);
+        education = root.findViewById(R.id.search_education);
+        experience = root.findViewById(R.id.search_experience);
+        skills = root.findViewById(R.id.search_skills);
         search = root.findViewById(R.id.search_button);
 
         search.setOnClickListener(new View.OnClickListener() {
@@ -54,19 +62,35 @@ public class SearchFragment extends Fragment {
 
     public void search() throws JSONException {
         Search search = new Search();
-        if(!TextUtils.isEmpty(name.getText()))
-        {
+        if (!TextUtils.isEmpty(name.getText())) {
             search.setName(name.getText().toString());
         }
-        if(!TextUtils.isEmpty(email.getText()))
-        {
+        if (!TextUtils.isEmpty(email.getText())) {
             search.setEmail(email.getText().toString());
+        }
+        if (!TextUtils.isEmpty(education.getText())) {
+            search.setEducation(education.getText().toString());
+        }
+        if (!TextUtils.isEmpty(experience.getText())) {
+            search.setExperience(experience.getText().toString());
+        }
+        if (!TextUtils.isEmpty(skills.getText())) {
+            Skill skill = new Skill();
+            skill.setName(skills.getText().toString());
+            ArrayList<Skill> skills = new ArrayList<>();
+            skills.add(skill);
+            search.setSkill(skills);
+            Log.d("SearchFragment","Skill name:"+search.getSkill().get(0).getName());
         }
         handler.searchFilter(search);
     }
 
-    public void statusCode(int StatusCode)
-    {
-
+    public void searchResult(int statusCode, ArrayList<User> users) {
+        if (statusCode != 0) {
+            Log.d("Search", "statusCode: SUCCESS");
+            ResultListFragment results = ResultListFragment.newInstance();
+            results.getSearchResult(statusCode, users);
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, results).addToBackStack(null).commit();
+        }
     }
 }

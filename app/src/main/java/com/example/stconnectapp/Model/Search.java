@@ -1,7 +1,10 @@
 package com.example.stconnectapp.Model;
 
+import java.util.ArrayList;
+
 public class Search {
     String name, email, experience, education;
+    ArrayList<Skill> skill;
 
     public Search(){}
 
@@ -35,6 +38,14 @@ public class Search {
 
     public void setEducation(String education) {
         this.education = education;
+    }
+
+    public ArrayList<Skill> getSkill() {
+        return skill;
+    }
+
+    public void setSkill(ArrayList<Skill> skill) {
+        this.skill = skill;
     }
 }
 

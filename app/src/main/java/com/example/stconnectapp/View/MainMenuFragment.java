@@ -28,8 +28,9 @@ public class MainMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
         root = inflater.inflate(R.layout.main_menu_fragment, container, false);
+
+        getActivity().setTitle("Main Menu");
 
         grid = root.findViewById(R.id.gridview);
         grid.setAdapter(new GridAdapter(Helper.getContext(), gridStrings, gridImages));

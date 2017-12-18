@@ -29,6 +29,7 @@ public class ChangePasswordFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         root = inflater.inflate(R.layout.change_password_fragment, container, false);
 
+        getActivity().setTitle("Change Password");
         handler = new PasswordHandler(this);
 
         password = root.findViewById(R.id.password);

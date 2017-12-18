@@ -25,8 +25,6 @@ public class LogInHandler {
     private SharedPreferences sharedPreferences;
     private LogInFragment fragment;
 
-    public LogInHandler() {}
-
     public LogInHandler(LogInFragment fragment) {
         this.fragment = fragment;
     }

@@ -31,17 +31,12 @@ public class LogInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         root = inflater.inflate(R.layout.log_in_fragment, container, false);
+        getActivity().setTitle("Student Talks: Connect");
         handler = new LogInHandler(this);
 
         email = root.findViewById(R.id.email);
         password = root.findViewById(R.id.password);
 
-        Button testButton = root.findViewById(R.id.test_button);
-        testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
         Button logInButton = root.findViewById(R.id.log_in_button);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
