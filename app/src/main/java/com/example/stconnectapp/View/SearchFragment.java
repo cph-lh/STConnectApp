@@ -49,18 +49,14 @@ public class SearchFragment extends Fragment {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    search();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                search();
             }
         });
 
         return root;
     }
 
-    public void search() throws JSONException {
+    public void search() {
         Search search = new Search();
         if (!TextUtils.isEmpty(name.getText())) {
             search.setName(name.getText().toString());
@@ -80,14 +76,12 @@ public class SearchFragment extends Fragment {
             ArrayList<Skill> skills = new ArrayList<>();
             skills.add(skill);
             search.setSkill(skills);
-            Log.d("SearchFragment","Skill name:"+search.getSkill().get(0).getName());
         }
         handler.searchFilter(search);
     }
 
     public void searchResult(int statusCode, ArrayList<User> users) {
         if (statusCode != 0) {
-            Log.d("Search", "statusCode: SUCCESS");
             ResultListFragment results = ResultListFragment.newInstance();
             results.getSearchResult(statusCode, users);
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, results).addToBackStack(null).commit();

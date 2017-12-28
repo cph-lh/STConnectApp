@@ -10,7 +10,6 @@ public class User {
     ArrayList<Experience> experience;
 
     public User(){
-
     }
 
     public User(String email, String password, String passwordConfirmation) {

@@ -45,18 +45,15 @@ public class ResultListFragment extends Fragment {
 
         switch (status) {
             case 404:
-                Log.d("Result", "statusCode: ERROR");
                 errorText.setVisibility(View.VISIBLE);
                 errorIcon.setVisibility(View.VISIBLE);
                 break;
             case 201:
-                Log.d("Result", "statusCode: SUCCESS");
                 adapter = new ResultListAdapter(getActivity(), users);
                 listView.setAdapter(adapter);
                 break;
             default:
-//                Snackbar.make(root, "Unexpected error occurred - try again later.", Snackbar.LENGTH_LONG).show();
-                Log.d("SUT","SUTTER MAX: "+status);
+                //DO NOTHING
                 break;
         }
         return root;
@@ -66,7 +63,6 @@ public class ResultListFragment extends Fragment {
         this.status = statusCode;
         if (users != null) {
             this.users = users;
-            Log.d("ResultList", "Users array " + users.get(0).getName());
         }
     }
 }

@@ -37,7 +37,6 @@ public class PasswordHandler {
     public void changePassword(User user) {
         client = new AsyncHttpClient();
         setHeaders(client);
-
         JSONObject jsonParams = new JSONObject();
         try {
             jsonParams.put("password", user.getPassword());

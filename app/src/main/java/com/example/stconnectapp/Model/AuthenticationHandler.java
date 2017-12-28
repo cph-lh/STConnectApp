@@ -17,14 +17,12 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class AuthenticationHandler {
 
-
     private AsyncHttpClient client;
     private static final String BASE_URL = "http://159.89.3.169:3000/auth/";
     private SharedPreferences sharedPreferences;
     private StartFragment fragment;
 
-
-    public AuthenticationHandler(StartFragment fragment){
+    public AuthenticationHandler(StartFragment fragment) {
         this.fragment = fragment;
     }
 
@@ -44,12 +42,12 @@ public class AuthenticationHandler {
                                 fragment.CheckLogInStatusCode(statusCode);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-
                             }
                         }
+
                         @Override
                         public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                            Log.d("asd",""+statusCode);
+                            Log.d("asd", "" + statusCode);
                             fragment.CheckLogInStatusCode(statusCode);
                         }
                     });
